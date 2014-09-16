@@ -1,0 +1,130 @@
+<html>
+
+    <body>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+        </script>
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function() {
+                $.getJSON("/GraphData/GetMachine", function(data) {
+                    var options = '';
+                    $.each(data, function(key, value) {
+                        // alert(value.id+ ': ' + value.reg);
+
+                        options += '<option value="' + value.id + '">' + value.reg + '</option>';
+                    });
+                    // alert(options);
+                    $('select#machine').html(options);
+                });
+            });
+            function myFunction()
+            {
+                var e = document.getElementById("machine");
+                var strUser = e.options[e.selectedIndex].value;
+                var e1 = document.getElementById("resource");
+                var strUser2 = e1.options[e1.selectedIndex].value;
+                var url = "/GraphData/";
+                if (strUser.indexOf("Host") > -1)
+                { 
+                    switch (strUser2)
+                    {
+                       
+                        case '1':
+                            {
+                                url=url+'HostStorageStats.jsp?machine='+strUser;
+                                break;
+                            }
+                        case '2':
+                            {
+                                 url=url+'HostMemoryStats.jsp?machine='+strUser;
+                                break;
+                            }
+                        case '3':
+                            {
+                                 url=url+'HostCPUStats.jsp?machine='+strUser;
+                                
+                                break;
+                            }
+                        case '4':
+                            {
+                                 url=url+'HostNetworkStats.jsp?machine='+strUser;
+                                break;
+                            }
+                        case '5':
+                            {
+                                 url=url+'HostSystemStats.jsp?machine='+strUser;
+                                break;
+                            }
+
+                    }
+                }
+                else
+                {
+                    switch (strUser2)
+                    {
+                        
+                        case '1':
+                            {
+                                url=url+'UbuntuStorageStats.jsp?machine='+strUser;
+                                break;
+                            }
+                        case '2':
+                            {
+                                 url=url+'UbuntuMemoryStats.jsp?machine='+strUser;
+                                break;
+                            }
+                        case '3':
+                            {
+                                 url=url+'UbuntuCPUStats.jsp?machine='+strUser;
+                                
+                                break;
+                            }
+                        case '4':
+                            {
+                                 url=url+'UbuntuNetworkStats.jsp?machine='+strUser;
+                                break;
+                            }
+                        case '5':
+                            {
+                                 url=url+'UbuntuSystemStats.jsp?machine='+strUser;
+                                break;
+                            }
+                    }
+                }
+document.getElementById("someFrame").src = url;
+            }
+        </script>
+        <table width="100%" height="100%" border=1>
+            <tr >
+                <td width="15%">
+                    <div>
+                        <form name="dropdownMenu" method="post">
+                            <select id="machine" name="machine" style="width: 128px">
+
+                            </select>
+                            <select id="resource" name="resource" style="width: 128px">
+                                <option value="3">CPU</option>
+                                <option value="2">Memory Stats</option>
+                                <option value="4">Network Stats</option>
+                                <option value="1">Storage Stats</option>
+                                <option value="5">System Stats</option>
+                            </select>
+                            </br>
+                            <input name="Button1" type="button" value="GO"
+                                   onclick='myFunction()'>
+                        </form>
+                    </div>
+                </td>
+
+
+                <td width="85%" height="100%">
+                    <div >
+                        <iframe frameBorder="1" name="someFrame" id="someFrame" width="1040px" height="800px"></iframe> 
+                    </div>
+                </td>
+            </tr>
+        </table>          
+
+
+
+    </body>
+</html>
