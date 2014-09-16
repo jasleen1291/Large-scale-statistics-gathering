@@ -1,0 +1,9 @@
+Large Scale Perf-Statistics gathering, DRS and DPM Implementation in Virtualized Environment
+================================
+With the growing need of cloud infrastructure in the organizations, the importance of virtualization has also grown tremendously. Virtualization is used for setting up the development and test environments; service virtualization concepts are inevitable in testing of software.  Handling the logs to monitor the performance of the virtual machines and balancing the loads based on the usage is gaining importance. These scenarios should be handled in a cost-effective and scalable manner.
+1.1. Goals:
+One of the major challenge faced in the use of virtual machines, is the collection of logs from the virtual machines. Perform load balancing of virtual machines between hosts and handle power management by using distributed resources scheduler and distributed power management concepts.
+1.2. Objectives:
+The key objective of the project is to collect the real time performance statistics of the virtual machines. The data are also stored in a scalable database in order to support the continuous collection of performance statistics. This contains both the historical data and transactional data, which are consolidated and displayed for analytical purposes.
+1.3. Needs:
+The performance statistics collected from the virtual machines are presented in the form of graph which help in better analysis of the status of the virtual machines, which in turn is required for making decisions regarding usage, load balancing, memory allocation etc. Distributed resource scheduler is required for balancing the loads, so that over utilization or underutilization of the resources can be avoided. By means of doing the distributed power management, we can power off the unneeded hosts and power on only when it is required again.
